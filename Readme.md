@@ -9,7 +9,7 @@ you can use vscode to debug the local package.
 
 # 最终文件
 ```
-zhh@kico:~/git/testlocalmodule$ tree -I node_modules
+zhh@mysvr:~/git/tslocalpackage$ tree -I node_modules
 .
 ├── Readme.md
 ├── myapp
@@ -31,22 +31,22 @@ zhh@kico:~/git/testlocalmodule$ tree -I node_modules
 
 ## 初始化本地模块
 ```
-zhh@kico:~/git$ mkdir testlocalmodule
-zhh@kico:~/git$ cd testlocalmodule/
+zhh@mysvr:~/git$ mkdir tslocalpackage
+zhh@mysvr:~/git$ cd tslocalpackage/
 
-zhh@kico:~/git/testlocalmodule$ mkdir mypackage
-zhh@kico:~/git/testlocalmodule$ cd mypackage/
-zhh@kico:~/git/testlocalmodule/mypackage$ npm init
-zhh@kico:~/git/testlocalmodule/mypackage$ yarn add typescript ts-node -D
-zhh@kico:~/git/testlocalmodule/mypackage$ npx tsc --init
-zhh@kico:~/git/testlocalmodule/mypackage$ npx tsc index.ts
+zhh@mysvr:~/git/tslocalpackage$ mkdir mypackage
+zhh@mysvr:~/git/tslocalpackage$ cd mypackage/
+zhh@mysvr:~/git/tslocalpackage/mypackage$ npm init
+zhh@mysvr:~/git/tslocalpackage/mypackage$ yarn add typescript ts-node -D
+zhh@mysvr:~/git/tslocalpackage/mypackage$ npx tsc --init
+zhh@mysvr:~/git/tslocalpackage/mypackage$ npx tsc index.ts
 ```
 ts-node是可以直接执行typescript的环境，这样不需要webpack打包。
 
 npx tsc --init会生成tsconfig.json.注意修改sourceMap为True.
 
 最终模块package如下：
-/home/zhh/git/testlocalmodule/mypackage/package.json:
+/home/zhh/git/tslocalpackage/mypackage/package.json:
 ```
 {
   "name": "mypackage",
@@ -91,12 +91,12 @@ yarn link
 
 ## 应用
 ```
-zhh@kico:~/git/testlocalmodule$ mkdir myapp
-zhh@kico:~/git/testlocalmodule$ cd myapp
-zhh@kico:~/git/testlocalmodule/myapp$ yarn init
-zhh@kico:~/git/testlocalmodule/myapp$ yarn add typescript -D
-zhh@kico:~/git/testlocalmodule/myapp$ npx tsc --init
-zhh@kico:~/git/testlocalmodule/myapp$ cat package.json
+zhh@mysvr:~/git/tslocalpackage$ mkdir myapp
+zhh@mysvr:~/git/tslocalpackage$ cd myapp
+zhh@mysvr:~/git/tslocalpackage/myapp$ yarn init
+zhh@mysvr:~/git/tslocalpackage/myapp$ yarn add typescript -D
+zhh@mysvr:~/git/tslocalpackage/myapp$ npx tsc --init
+zhh@mysvr:~/git/tslocalpackage/myapp$ cat package.json
 {
   "devDependencies": {
     "ts-node": "^10.4.0",
@@ -123,7 +123,7 @@ hello.greet("zhh")
 yarn link mypackage
 ```
 ```
-zhh@kico:~/git/testlocalmodule/myapp$ npx ts-node index.ts
+zhh@mysvr:~/git/tslocalpackage/myapp$ npx ts-node index.ts
 Hello zhh, are you ok?!
 ```
 ### 调试
